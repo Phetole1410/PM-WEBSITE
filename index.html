@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <title>The Paul's Pub & Grill Picnic Site</title>
+
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin: 0 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        /* Hamburger button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* Make images responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        /* Zoom popup overlay */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .zoom-overlay img {
+            width: 90%;
+            max-width: 650px;
+            border-radius: 8px;
+        }
+
+        /* Responsive menu */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            nav a {
+                margin: 0;
+                padding: 12px 20px;
+                border-top: 1px solid #444;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/myLogoMaker_8-4-2025_21242_PM.png" width="150" alt="Logo" onclick="zoomImage(this)">
+    <h1>THE PAUL'S PUB & GRILL PICNIC SITE</h1>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Welcome to our picnic site</h2>
+    <p>Good food : Great Vibes : Picnic Atmosphere</p>
+</section>
+
+<!-- Main Site Image -->
+<img src="images/Screenshot 2025-11-18 112315.png" width="300" alt="Site view" onclick="zoomImage(this)">
+
+<!-- Zoom popup overlay -->
+<div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+    <img id="zoomedImg">
+</div>
+
+<script>
+    function zoomImage(img) {
+        document.getElementById("zoomedImg").src = img.src;
+        document.getElementById("zoomOverlay").style.display = "flex";
+    }
+
+    function closeZoom() {
+        document.getElementById("zoomOverlay").style.display = "none";
+    }
+
+    // Toggle hamburger menu
+    function toggleMenu() {
+        const nav = document.getElementById('navMenu');
+        nav.classList.toggle('show');
+    }
+</script>
+
+</body>
+</html>

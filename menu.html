@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <title>Our Menu</title>
+
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        /* Hamburger button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* Menu Images */
+        .menu-img {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            border-radius: 6px;
+            margin: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-section {
+            margin: 30px 0;
+        }
+
+        /* Zoom overlay */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .zoom-overlay img {
+            width: 90%;
+            max-width: 650px;
+            border-radius: 10px;
+        }
+
+        /* Responsive menu */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            nav a {
+                margin: 0;
+                padding: 12px 20px;
+                border-top: 1px solid #444;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>OUR MENU</h1>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="about us.html">About us</a>
+        <a href="menu.html">Menu</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- SECTION 1 -->
+    <section class="menu-section">
+        <h2>LONDON BEEF PLATE & BOEREWORS</h2>
+        <img class="menu-img" src="images/719c6bd2757b08684c0faae44d43159d.jpeg" alt="Beef Plate" onclick="zoomImage(this)">
+        <img class="menu-img" src="images/Mielie-pap-boerewors-gravy-melissa-mayo-south-african-braai-recipe-1.jpg" alt="Boerewors Plate" onclick="zoomImage(this)">
+        <p>Enjoy our FINGER LICKING GOOD Plates</p>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="menu-section">
+        <h2>ROSE FRIES</h2>
+        <img class="menu-img" src="images/Crispy-Fries_8.jpg" alt="Rose Fries" onclick="zoomImage(this)">
+        <p>Enjoy our crispy, crunchy rose fries</p>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="menu-section">
+        <h2>LONDON DRINKS</h2>
+        <img class="menu-img" src="images/Tequila-sunrise-fb8b3ab.jpg" alt="Tequila Sunrise" onclick="zoomImage(this)">
+        <img class="menu-img" src="images/glenfiddich-18-year-old-limited-edition-design-whisky.jpg" alt="Whisky" onclick="zoomImage(this)">
+        <p>Drinks that refresh your mood</p>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="menu-section">
+        <h2>CATHY BRAAI CHICKEN</h2>
+        <img class="menu-img" src="images/GoldiSummerLifestyle2023-SHISA-NYAMA-2.jpg" alt="Braai Chicken" onclick="zoomImage(this)">
+        <p>Enjoy our BRAAI CHICKEN with secret spices</p>
+    </section>
+
+</main>
+
+<!-- Zoom Popup -->
+<div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+    <img id="zoomedImg">
+</div>
+
+<script>
+    function zoomImage(img) {
+        document.getElementById("zoomedImg").src = img.src;
+        document.getElementById("zoomOverlay").style.display = "flex";
+    }
+
+    function closeZoom() {
+        document.getElementById("zoomOverlay").style.display = "none";
+    }
+
+    // Hamburger menu toggle
+    function toggleMenu() {
+        const nav = document.getElementById('navMenu');
+        nav.classList.toggle('show');
+    }
+</script>
+
+</body>
+</html>

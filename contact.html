@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <title>Contact Us</title>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        main {
+            padding: 10px 20px;
+        }
+
+        /* Navigation bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            border-radius: 4px;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Responsive: small screens */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        /* Responsive image */
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        /* Zoom overlay */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .zoom-overlay img {
+            width: 90%;
+            max-width: 650px;
+            border-radius: 10px;
+        }
+
+        /* Form styling */
+        form {
+            margin-top: 20px;
+        }
+
+        input, button {
+            padding: 8px;
+            width: 250px;
+            margin-top: 5px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <span class="menu-icon" onclick="toggleMenu()">☰</span>
+    <div class="nav-links" id="navLinks">
+          <a href="index.html">Home</a>
+        <a href="#contact">contact</a>
+    </div>
+</nav>
+
+<!-- CONTACT SECTION -->
+<header id="contact">
+    <h1>CONTACT US</h1>
+</header>
+
+<main>
+    <p><strong>Phone:</strong> 066 079 7579</p>
+    <p><strong>Email:</strong> info@paulspubgrill.com</p>
+    <p><strong>Location:</strong> South Africa, Tzaneen, Morapalala Village</p>
+
+    <img src="images/Screenshot 2025-11-18 104628.png" alt="Map" onclick="zoomImage(this)" id="map">
+</main>
+
+<!-- RESERVATION SECTION -->
+<header id="reservation">
+    <h1>MAKE A RESERVATION</h1>
+</header>
+
+<main>
+    <form>
+        <label>Name:</label><br>
+        <input type="text" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" required><br><br>
+
+        <label>Identity Number / Passport Number:</label><br>
+        <input type="text" required><br><br>
+
+        <label>Date:</label><br>
+        <input type="date" required><br><br>
+
+        <label>Time:</label><br>
+        <input type="time" required><br><br>
+
+        <button type="submit">Reserve</button>
+    </form>
+</main>
+
+<!-- Zoom Popup -->
+<div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+    <img id="zoomedImg">
+</div>
+
+<script>
+    function zoomImage(img) {
+        document.getElementById("zoomedImg").src = img.src;
+        document.getElementById("zoomOverlay").style.display = "flex";
+    }
+
+    function closeZoom() {
+        document.getElementById("zoomOverlay").style.display = "none";
+    }
+
+    function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("active");
+    }
+</script>
+
+</body>
+</html>

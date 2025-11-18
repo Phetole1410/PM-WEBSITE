@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <title>About Us</title>
+
+    <style>
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Hamburger button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+        }
+
+        /* Responsive gallery */
+        .gallery img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Zoom overlay */
+        .zoom-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .zoom-overlay img {
+            width: 90%;
+            max-width: 600px;
+            border-radius: 8px;
+        }
+
+        /* Responsive Menu */
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background-color: #333;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+            }
+
+            nav a {
+                padding: 10px 20px;
+                border-top: 1px solid #444;
+                margin: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>ABOUT US</h1>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>OUR STORY</h2>
+        <p>
+            Paul's pub and grill was founded by <strong>Mr. P.M. MALEMATJA</strong>.
+            His vision was to create a space where families and friends can relax,
+            enjoy braais, and share drinks under the picnic sun.
+        </p>
+        <h2>FOUNDER OF THE PUP</h2>
+
+        <!--Responsive Image Gallery-->
+        <div class="gallery">
+            <img src="images/Screenshot 2025-11-18 111751.png" alt="image" onclick="zoomImage(this)">
+        </div>
+        <p>MR PM MALEMATJA CEO OF THE PUP </p>
+
+        <h1>SITE VIEWS</h1>
+
+        <!-- Responsive Image Gallery -->
+        <div class="gallery">
+            <img src="images/0bcf74ee9765325990928f633302edc8.jpg" alt="Image 1" onclick="zoomImage(this)">
+            <img src="images/OUTSIDE.jpeg" alt="Image 2" onclick="zoomImage(this)">
+            <img src="images/TTD_PicnicAreas_Billboard03_1.jpg" alt="Image 3" onclick="zoomImage(this)">
+            <img src="images/2019126.jpg" alt="Image 4" onclick="zoomImage(this)">
+        </div>
+    </main>
+
+    <!-- Zoom Popup -->
+    <div class="zoom-overlay" id="zoomOverlay" onclick="closeZoom()">
+        <img id="zoomedImg">
+    </div>
+
+    <script>
+        function zoomImage(img) {
+            document.getElementById("zoomedImg").src = img.src;
+            document.getElementById("zoomOverlay").style.display = "flex";
+        }
+
+        function closeZoom() {
+            document.getElementById("zoomOverlay").style.display = "none";
+        }
+
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navMenu');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
